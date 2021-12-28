@@ -1,0 +1,33 @@
+﻿<h3>Form001</h3>
+
+<input type="text" placeholder="Insert your full name." @bind-value="@name" />
+<input type="number" placeholder="Insert your phone." @bind-value="@number" />
+<input type="text" placeholder="Where are you from?" @bind-value="@city" />
+
+<input type="button" value="Send" @onclick="ChangeText" />
+<div> @message</div>
+
+@code{
+    
+    [Parameter]
+    public string Message { get; set; }
+
+
+
+    string name;
+    string number;
+    string city;
+    string message = "\n Hi there, you're Welcome.";
+
+    protected override async Task OnInitializedAsync()
+    {
+        message = Message;
+    }
+
+    private void ChangeText()
+    {
+        message = "Hi " + name + " you are from " + city + ".";
+    }
+}
+
+
